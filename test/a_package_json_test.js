@@ -7,8 +7,7 @@ describe('package.json', () => {
       'express',
       'body-parser',
       'knex',
-      'bookshelf',
-      'pg'
+      'bookshelf'
     );
   });
 
