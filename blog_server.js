@@ -51,6 +51,10 @@ const Comments = bookshelf.Model.extend({
   },
 });
 
+exports.User = User;
+exports.Posts = Posts;
+exports.Comments = Comments;
+
 // ***** Server ***** //
 
 app.get('/user/:id', (req,res) => {
@@ -150,7 +154,7 @@ const listen = (port) => {
   });
 };
 
-const up = (justBackend) => {
+exports.up = (justBackend) => {
   return knex.migrate.latest([process.env.NODE_ENV])
     .then(() => {
       return knex.migrate.currentVersion();
@@ -164,9 +168,3 @@ const up = (justBackend) => {
     });
 };
 
-module.exports = {
-  'User': User,
-  'Posts': Posts,
-  'Comments': Comments,
-  'up': up,
-};
