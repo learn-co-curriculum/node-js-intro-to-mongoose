@@ -9,10 +9,6 @@ const config  = require('./knexfile.js');
 const app = express();
 app.use(bodyParser.json());
 
-// Determine server environment (development|testing).
-const dbName = process.env.NODE_ENV ? 'learnco_blog_test' : 'learnco_blog';
-console.log('Using database: ', dbName);
-
 // Configure & Initialize Bookshelf & Knex.
 console.log('Running in environment: ' + process.env.NODE_ENV);
 const knex = require('knex')(config[process.env.NODE_ENV]);
