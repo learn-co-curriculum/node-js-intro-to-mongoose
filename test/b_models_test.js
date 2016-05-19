@@ -22,18 +22,8 @@ let mockComment = {
 
 describe('Models', () => {
 
-  it('necessary models exist', (done) => {
+  it('User models exist', (done) => {
     expect(blog.User, 'to be defined');
-    done();
-  });
-
-  it('Posts model exists', (done) => {
-    expect(blog.Posts, 'to be defined');
-    done();
-  });
-
-  it('Comments model exists', (done) => {
-    expect(blog.Comments, 'to be defined');
     done();
   });
 
@@ -55,6 +45,11 @@ describe('Models', () => {
       });
   });
 
+  it('Posts model exists', (done) => {
+    expect(blog.Posts, 'to be defined');
+    done();
+  });
+
   it('Posts model can save a post', (done) => {
     mockPost.author = mockUser.id;
     blog.Posts
@@ -71,6 +66,11 @@ describe('Models', () => {
         mockPost.id = post.get('id');
         done();
       });
+  });
+
+  it('Comments model exists', (done) => {
+    expect(blog.Comments, 'to be defined');
+    done();
   });
 
   it('Comments model can save a comment on a post', (done) => {
