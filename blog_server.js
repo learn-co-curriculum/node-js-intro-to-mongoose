@@ -18,6 +18,11 @@ console.log('Running in environment: ' + process.env.NODE_ENV);
 const knex = require('knex')(config[process.env.NODE_ENV]);
 const bookshelf = require('bookshelf')(knex);
 
+// This is a good place to start!
+
+
+
+
 // Exports for Server hoisting.
 const listen = (port) => {
   return new Promise((resolve, reject) => {
