@@ -3,6 +3,7 @@
 const _            = require('lodash');
 const express      = require('express');
 const bodyParser   = require('body-parser');
+const config  = require('./knexfile.js');
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,36 +13,9 @@ console.log('Using database: ', dbName);
 
 // ***** Knex & Bookshelf Configuration ***** //
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    database: dbName
-  },
-  debug: true
-});
-
-const pg = require('knex')({
-  client: 'pg',
-  connection: process.env.PG_CONNECTION_STRING,
-  searchPath: 'knex,public'
-});
-
+console.log('Running in environment: ' + process.env.NODE_ENV);
+const knex = require('knex')(config[process.env.NODE_ENV]);
 const bookshelf = require('bookshelf')(knex);
-
-
-
-// ***** Schema Helper Functions ***** //
-
-const setupSchema = () => {
-  // This function should return a Promise
-  // that builds your schema using knex.
-};
-
-const destroySchema = () => {
-  // This function should return a Promise that
-  // destroys your schema using knex.
-};
-
 
 // ***** Module Exports ***** //
 
@@ -53,35 +27,17 @@ const listen = (port) => {
   });
 };
 
-const up = (justBackend) => {
-  justBackend = _.isUndefined(justBackend) ? false : justBackend;
-  return setupSchema().then(() => {
-    console.log('Done building schema...');
-  }).then(() => {
-    if(justBackend)
-      return;
-    return listen(3000);
-  }).then(() => {
-    console.log('Listening on port 3000...');
-  }).catch((error) => {
-    console.error(error);
-  });
+exports.up = (justBackend) => {
+  return knex.migrate.latest([process.env.NODE_ENV])
+    .then(() => {
+      return knex.migrate.currentVersion();
+    })
+    .then((val) => {
+      console.log('Done running latest migration:', val);
+      return listen(3000);
+    })
+    .then(() => {
+      console.log('Listening on port 3000...');
+    });
 };
 
-const tearDown = () => {
-  if(!process.env.TESTING)
-    return;
-  return destroySchema().then(() => {
-    console.log('Schema destroyed.');
-  }).catch((error) => {
-    console.error(error);
-  });
-};
-
-module.exports = {
-//  'User': User,
-//  'Posts': Posts,
-//  'Comments': Comments,
-  'up': up,
-  'tearDown': tearDown
-};
