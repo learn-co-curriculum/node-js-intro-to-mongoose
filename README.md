@@ -111,14 +111,14 @@ exports.down = function(knex, Promise) {
 Then once we'd filled out your schema we would then run `knex migrate:latest` to run our migrations, or `knex migrate:rollback` to roll back the latest set of migrations. The `up` and `down` functions here specify, respectively, the change to the database, and the way to rollback that change.
 
 
-## So How Can We Compare Them?
+## So How Can We Compare Bookshelf & ActiveRecord?
 
 Well, as you can see Bookshelf and ActiveRecord seek to achieve the same high level of abstraction, allowing us to think about and manipulate our data in the database without having to worry about the detailed query language that our database may be using.
 Both Bookshelf and ActiveRecord belong to a type of software pattern called an "Object Relational Mapping" or ORM. You can read more about them [here](http://en.wikipedia.org/wiki/Object-relational_mapping) and [here](https://stackoverflow.com/questions/1279613/what-is-an-orm-and-where-can-i-learn-more-about-it).
 
 But what are the differences between Bookshelf.Js and ActiveRecord? Well, essentially the the biggest difference is that Bookshelf.Js is going to require you to write out much more of the query logic yourself using the knex schema builder functions and syntax.
 
-Which is better? Well, ActiveRecord handles so much behind the scenes for you so beautifully that it's hard to not admire the slickness of its machinery! Perhaps, though, it's satisfying to be involved at a slighly lower level with the code that is manipulating your datain the database as you are when using Bookshelf / Knex.
+Which is better? Well, ActiveRecord handles so much behind the scenes for you so beautifully that it's hard not to admire the slickness of the machinery! Perhaps, though, it's satisfying to be involved at a slighly lower level with the code that is manipulating your data in the database as you are when using Bookshelf / Knex.
 
 But for the moment let's not judge. Let's just notice how different it feels to achieve something a system of model to represent your application data in Bookshelf comparedto Active Record.
 
