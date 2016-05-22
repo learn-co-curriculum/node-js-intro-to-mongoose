@@ -7,8 +7,9 @@ In this lab, we will build the backend for a blog using the ORM libraries Knex (
 
 ## Introduction
 
-Every heard of a blog? Of course you have! We all use blogs every day; they're one of the most common symbols of the disruptive power of web technology. But do you know how to build one? That's what we'll be doing in this lab. We'll build a blog back end, that can handle users, posts, and post commenting. As we move through this unit, we will expand and build on the work we do here.
+[Blogging Graphic](http://ezmiller.s3.amazonaws.com/public/flatiron-imgs/blog.gif)
 
+Every heard of a blog? Of course you have! We all use blogs every day; they're one of the most common symbols of the disruptive power of web technology. But do you know how to build one? That's what we'll be doing in this lab. We'll build a blog back end, that can handle users, posts, and post commenting. As we move through this unit, we will expand and build on the work we do here.
 
 ## What We'll Use to Build: Knex & Bookshelf.Js
  
