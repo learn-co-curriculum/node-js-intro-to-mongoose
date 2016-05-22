@@ -19,7 +19,9 @@ Before we get into building our blog, let's talk first about the tools that we'l
 knex('users').select('*').where({id: 1});
 ```
 
-That way we don't have to write out the query ourselves or worry about the particular syntax that a specific database may require. Bookshelf.Js builds on top of knex, allowing us to reach an even higher level of abstraction when dealing with the units of data that comprise our application. What does this mean more concretely? It means that we can define a model like so:
+That way we don't have to write out the query ourselves or worry about the particular syntax that a specific database may require. Bookshelf.Js builds on top of knex, allowing us to reach an even higher level of abstraction when dealing with the units of data that comprise our application.
+
+What does this mean more concretely? It means that we can define a model like so:
 
 ```
 const User = bookshelf.Model.extend({
@@ -36,8 +38,8 @@ User.forge({id: 1}).fetch().then((usr) => {
 ```
 
 In other words, Bookshelf provides us with a more expressive syntax for interacting with the data in our application. In addition, as we'll discover in this lab, it makes it MUCH easier to define and work with the relationships *between* our data in the database.
- 
-## Bookshelf / Knex v. ActiveRecord
+
+## Bookshelf & Knex v. ActiveRecord
 
 Now many of you are very familiar with the ActiveRecord tool for defining data that is used in Rails. As such, you're probably already seeing some similarities between Bookshelf / Knex and ActiveRecord. If so, you're right!
 
@@ -50,14 +52,14 @@ end
 user = User.find_by(id: 1)
 ```
 
+Another similarity is that through its depednency on Knex, Bookshelf, like ActiveRecord, includes the concept of a database migrations for handling database changes and versioning.
 
-
-Another similarity is that through its depednency on Knex Bookshelf, like ActiveRecord, includes the concept of a database migration for handling database changes and versioning. So just as you might do something like this in ActiveRecord to support the User table model:
+So just as we might do something like this in ActiveRecord to support the User table model:
 
 ```
 $ bin/rails generate model User id:integer name:string
 ```
-  
+
 Thereby generating the following migration:
 
 ```
@@ -71,15 +73,13 @@ class CreateUser < ActiveRecord:Migrations[5.0]
 end
 ```
 
-Ultimately, running your migration by doing: `rails db:migrate`.
-
-When using Bookshelf & Knex you'll do something quite similar. First you'd run the following:
+And then running our migrations with `rails db:migrate`. Using Bookshelf & Knex we'd do something quite similar. First we would run the following:
 
 ```
 $ knex migrate:make User
 ```
 
-This would then create a migration file in a directory specified in the config file `knexfile.js` (more about that in a bit) that would look like this:
+This would create a migration file in the migrations directory that looks like this:
 
 ```
 exports.up = function(knex, Promise) {
@@ -91,7 +91,7 @@ exports.down = function(knex, Promise) {
 };
 ```
 
-At this point, you would then fill in the appropriate knex function calls to create your table using the [knex schema functions](http://knexjs.org/#Schema). So something like this:
+At this point, we would fill in the appropriate knex function calls to create our table using the [knex schema functions](http://knexjs.org/#Schema). Something like this:
 
 ```
 exports.up = function(knex, Promise) {
@@ -106,8 +106,7 @@ exports.down = function(knex, Promise) {
 };
 ```
 
-Then once we'd filled out your schema we would then run `knex migrate:latest` to run our migrations, or `knex migrate:rollback` to roll back the latest set of migrations. The `up` and `down` functions here specify, respectively, the change to the database, and the way to rollback that change.
-
+And finally, we'd run our migrations: `knex migrate:latest`. The `up` and `down` functions here specify, respectively, the change to the database, and the way to rollback that change.
 
 ## So How Can We Compare Bookshelf & ActiveRecord?
 
