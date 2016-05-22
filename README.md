@@ -134,10 +134,11 @@ That's about it then. As you are building, you can start your server using `npm 
 
 Now without further ado here is our specification. We want to build a blog server with the following characteristics:
 
-1) The blog should consist of users, who can create posts as well as comment on posts. 2) Each user should be able to write many posts, and many comments on a post. Plus each post should be able to have many comments.
-3) We should be able to fetch information about a user and a single post.
-4) When we fetch a post, the data returned should include the user's data as well as a list of the comments associated with the post.
-5) We should also be able to fetch a list of all the posts.
+1. The blog should consist of users, who can create posts as well as comment on posts. 
+2. Each user should be able to write many posts, and many comments on a post. Plus each post should be able to have many comments.
+3. We should be able to fetch information about a user and a single post.
+4. When we fetch a post, the data returned should include the user's data as well as a list of the comments associated with the post.
+5. We should also be able to fetch a list of all the posts.
 
 As usual, this specification is also reflected in the tests in the tests directory, so consult the tests as well for guidance on how to begin building.
 
