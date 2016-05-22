@@ -144,3 +144,9 @@ Now without further ado here is our specification. We want to build a blog serve
 As usual, this specification is also reflected in the tests in the tests directory, so consult the tests as well for guidance on how to begin building.
 
 Enjoy!
+
+## Resources
+
+* Bookshelf documentation: [bookshelfjs.org](http://bookshelfjs.org)
+* Knex documentation: [knexjs.org](http://knexjs.org)
+* [Wikipedia entry for "Object Relational Mapping" (ORM)](https://en.wikipedia.org/wiki/Object-relational_mapping)
