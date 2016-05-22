@@ -112,7 +112,8 @@ And finally, we'd run our migrations: `knex migrate:latest`. The `up` and `down`
 ## So How Can We Compare Bookshelf & ActiveRecord?
 
 Well, as you can see Bookshelf and ActiveRecord seek to achieve the same high level of abstraction, allowing us to think about and manipulate our data in the database without having to worry about the detailed query language that our database may be using.
-Both Bookshelf and ActiveRecord belong to a type of software pattern called an "Object Relational Mapping" or ORM. You can read more about them [here](http://en.wikipedia.org/wiki/Object-relational_mapping) and [here](https://stackoverflow.com/questions/1279613/what-is-an-orm-and-where-can-i-learn-more-about-it).
+
+Additionally, both Bookshelf and ActiveRecord are implementations of a software pattern called "Object Relational Mapping" or ORM. You can read more about ORM [here](http://en.wikipedia.org/wiki/Object-relational_mapping) and [here](https://stackoverflow.com/questions/1279613/what-is-an-orm-and-where-can-i-learn-more-about-it).
 
 But what are the differences between Bookshelf.Js and ActiveRecord? Well, essentially the the biggest difference is that Bookshelf.Js is going to require you to write out much more of the query logic yourself using the knex schema builder functions and syntax.
 
